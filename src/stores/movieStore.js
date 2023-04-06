@@ -7,12 +7,12 @@ export const useMovieStore = defineStore({
     movies: [],
     loading: true,
     apiKey: '4fa9b78b',
-    title: 'batman'
+    query: 's=batman'
   }),
   actions: {
-    async fetchMovies() {
+    async fetchMovies(query = this.query) {
       this.loading = true
-      const movies = await fetchMovies(this.title, this.apiKey)
+      const movies = await fetchMovies(query, this.apiKey)
       this.movies = movies
       this.loading = false
     }
